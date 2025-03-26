@@ -4,30 +4,27 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        If Val(txt.Text) <= 2999 Or Val(txt.Text) > 3999 Then
-            MsgBox("This does not fall into this category")
-        Else
-            MsgBox("This does fall into this category")
-        End If
+        Check(Val(txt.Text) <= 2999 And Val(txt.Text) > 3999)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        If IsNumeric(txt.Text) Then
-            MsgBox("This does fall into this category")
-        Else
-            MsgBox("This does not fall into this category")
-        End If
+        Check(IsNumeric(txt.Text))
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If LCase(txt.Text) = "yes" Or LCase(txt.Text) = "no" Then
-            MsgBox("This does fall into this category")
-        Else
-            MsgBox("This does not fall into this category")
-        End If
+        Check(LCase(txt.Text) = "yes" Or LCase(txt.Text) = "no")
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         txt.Text = ""
+        res.Text = "-"
     End Sub
+
+    Function Check(condition As Boolean)
+        If condition = True Then
+            res.Text = "✅"
+        Else
+            res.Text = "❌"
+        End If
+    End Function
 End Class
